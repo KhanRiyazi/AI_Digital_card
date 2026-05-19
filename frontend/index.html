@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
+    <meta name="description" content="Smart Student ID Card System with AI-Powered Performance Predictions" />
+    <meta name="theme-color" content="#1e293b" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Material Icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,1" />
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <!-- Fallback for QRCode if CDN fails -->
+    <script>
+        window.addEventListener('load', function () {
+            if (typeof QRCode === 'undefined') {
+                console.warn('QRCode library not loaded from CDN, creating fallback');
+                window.QRCode = function (element, options) {
+                    this.makeCode = function (text) {
+                        element.innerHTML = '<div style="text-align:center;padding:20px;">QR Code: ' + text.substring(0, 30) + '...</div>';
+                    };
+                    this.clear = function () {
+                        element.innerHTML = '';
+                    };
+                    if (options && options.text) {
+                        this.makeCode(options.text);
+                    }
+                };
+                window.QRCode.CorrectLevel = { H: 0 };
+            }
+        });
+    </script>
+
+    <title>✨ Smart Student ID Card | AI-Powered Dashboard</title>
+
+    <style>
+        /* Global styles to ensure modals work */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: radial-gradient(circle at 10% 20%, rgb(15, 30, 45) 0%, rgb(10, 20, 32) 100%);
+            min-height: 100vh;
+        }
+
+        /* Ensure proper z-index stacking */
+        #root {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

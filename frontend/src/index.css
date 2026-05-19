@@ -1,0 +1,362 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: radial-gradient(circle at 10% 20%, rgb(15, 30, 45) 0%, rgb(10, 20, 32) 100%);
+        min-height: 100vh;
+        color: #e2e8f0;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(59, 130, 246, 0.5);
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(59, 130, 246, 0.8);
+    }
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-white/5 backdrop-blur-xl rounded-2xl p-5 border border-white/10 shadow-2xl transition-all duration-300 hover:shadow-blue-500/10;
+    }
+
+    .glass-header {
+        @apply bg-slate-800/75 backdrop-blur-xl rounded-2xl p-4 mb-6 flex justify-between items-center flex-wrap gap-4 border border-blue-500/30 shadow-lg;
+    }
+
+    .input-modern {
+        @apply w-full px-4 py-3 bg-black/40 border border-white/15 rounded-xl text-white font-inter text-sm transition-all duration-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 hover:border-blue-500/50;
+    }
+
+    .btn-gradient {
+        @apply bg-gradient-to-r from-blue-600 to-blue-800 border-none px-5 py-2.5 rounded-full font-bold text-white cursor-pointer inline-flex items-center gap-2 transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95 text-sm;
+    }
+
+    .btn-outline {
+        @apply bg-transparent border-2 border-blue-500 text-blue-500 px-4 py-2 rounded-full font-semibold cursor-pointer text-sm transition-all duration-200 hover:bg-blue-500/10 hover:scale-105;
+    }
+
+    .stat-modern {
+        @apply bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-3 text-center border border-blue-500/30 transition-all duration-300 hover:scale-105 hover:border-blue-500/60;
+    }
+
+    .stat-number {
+        @apply text-3xl font-extrabold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent;
+    }
+}
+
+@layer utilities {
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .loading-spinner {
+        @apply inline-block w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin;
+    }
+
+    .text-gradient {
+        @apply bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent;
+    }
+
+    /* 3D Flip Card Animations */
+    .preserve-3d {
+        transform-style: preserve-3d;
+    }
+
+    .backface-hidden {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .rotate-y-180 {
+        transform: rotateY(180deg);
+    }
+
+    .perspective-1000 {
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
+    }
+
+    /* Fade In Animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    /* Slide In Animation */
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .animate-slide-in {
+        animation: slideIn 0.3s ease-out;
+    }
+
+    /* Pulse Animation */
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    .animate-pulse-slow {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Bounce Animation */
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .animate-bounce-slow {
+        animation: bounce 1s ease-in-out infinite;
+    }
+
+    /* Spin Animation */
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .animate-spin-slow {
+        animation: spin 3s linear infinite;
+    }
+
+    /* Glow Animation */
+    @keyframes glow {
+
+        0%,
+        100% {
+            box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+        }
+
+        50% {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+        }
+    }
+
+    .animate-glow {
+        animation: glow 2s ease-in-out infinite;
+    }
+
+    /* Shimmer Effect */
+    @keyframes shimmer {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    .animate-shimmer {
+        animation: shimmer 3s infinite;
+    }
+
+    /* Scale Animation */
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .animate-scale-in {
+        animation: scaleIn 0.3s ease-out;
+    }
+
+    /* Rotate Animation */
+    @keyframes rotateIn {
+        from {
+            opacity: 0;
+            transform: rotate(-5deg) scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+    }
+
+    .animate-rotate-in {
+        animation: rotateIn 0.3s ease-out;
+    }
+
+    /* Float Animation */
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-5px);
+        }
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    /* Shimmer Background for Premium Cards */
+    .shimmer-bg {
+        background: linear-gradient(90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 100%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+    }
+
+    /* Holographic Effect */
+    .holographic {
+        background: linear-gradient(135deg,
+                rgba(59, 130, 246, 0.1) 0%,
+                rgba(139, 92, 246, 0.1) 25%,
+                rgba(236, 72, 153, 0.1) 50%,
+                rgba(139, 92, 246, 0.1) 75%,
+                rgba(59, 130, 246, 0.1) 100%);
+        background-size: 200% 200%;
+        animation: shimmer 3s infinite;
+    }
+
+    /* Card Hover Effect */
+    .card-hover {
+        transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Glass Morphism Enhancement */
+    .glass-premium {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+
+    /* Text Gradient Variations */
+    .text-gradient-gold {
+        background: linear-gradient(135deg, #ffd700, #ffed4e);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .text-gradient-silver {
+        background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    /* Border Animation */
+    @keyframes borderPulse {
+
+        0%,
+        100% {
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        50% {
+            border-color: rgba(59, 130, 246, 0.8);
+        }
+    }
+
+    .animate-border-pulse {
+        animation: borderPulse 2s ease-in-out infinite;
+    }
+
+    /* Success/Error Toast Animations */
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-slide-up {
+        animation: slideUp 0.3s ease-out;
+    }
+}
